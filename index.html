@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo Project</title>
+    <base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./appBuilder/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./appBuilder/css/style.css">
+	<script src="./appBuilder/assets/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="./appBuilder/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="./appBuilder/assets/bower_components/angular/angular.min.js"></script>
+	<script src="./appBuilder/assets/bower_components/angular-route/angular-route.min.js"></script>
+	<script src="./appBuilder/assets/bower_components/firebase/firebase.js"></script>
+	<script src="./appBuilder/assets/bower_components/angularfire/dist/angularfire.js"></script>
+	<!-- controller -->
+	<script src="./appBuilder/js/app.js"></script>
+</head>
+<body ng-app="app" ng-controller="mainCtrl">
+
+<nav class="navbar navbar-default navbar-fixed-top top-bar">
+	<div class="container">
+		<div class="">
+			<div class="head-cont">
+			   <div class="logo-area">
+				   <a class="navbar-brand white" href="javascript:void(0);">
+					   	Angular Js
+				   </a>
+			   </div>
+			   <!-- <button ng-if="isUserLogin" id="" class="btn log-outbtn" ng-click="logout();"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</button> -->
+			</div>
+		</div>
+	</div>
+</nav>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="#"></a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a routerLink="/">Home</a></li>
+			<li><a routerLink="/about">About</a></li>
+			<li><a routerLink="/contact">Contact</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<div class="container">
+		<div style="text-align:center">
+		</div>
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="row">
+					<a href="javascript:void(0);" ng-click="openMenu('home');">
+						<img src="./appBuilder/assets/images/home.png" />
+					</a>
+					<a href="javascript:void(0);" ng-click="openMenu('facebook');">
+						<img src="./appBuilder/assets/images/facebook.png" />
+					</a>
+					<img src="./appBuilder/assets/images/more.png" />
+					<img src="./appBuilder/assets/images/order.png" />
+					<img src="./appBuilder/assets/images/social.png" />
+				</div>
+				<div class="homeWeb" ng-if="viewPage.menuPage">
+					<div class="row">
+						<h4>Home</h4>
+					</div>
+				</div>
+				<div class="facebookWeb" ng-if="viewPage.facebook">
+					<div class="row">
+						<h4>Facebook</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<img ng-src="./appBuilder/assets/images/mobile.png" />
+				<div ng-if="viewPage.menuPage && homeMenu.index">
+					<div class="appCss" style="background-image: url('./appBuilder/assets/{{folderName}}/background.png');">
+						<div class="row" style="margin-left:0px;">
+							<img ng-src="./appBuilder/assets/{{folderName}}/homeHeader.png" class="headerMenu" />
+						</div>
+						<div class="row" style="margin-top: 253px;margin-left: 3px;" >
+							<div class="">
+								<a href="javascript:void(0);" ng-click="openMenu('menu');">
+									<img ng-src="./appBuilder/assets/{{folderName}}/menu.png" class="appHomeMenu"/>
+								</a>
+								<a href="javascript:void(0);" ng-click="openMenu('event');">
+									<img ng-src="./appBuilder/assets/{{folderName}}/event.png" class="appHomeMenu"/>
+								</a>
+								<a href="javascript:void(0);" ng-click="openMenu('coffee');">
+									<img ng-src="./appBuilder/assets/{{folderName}}/coffee.png" class="appHomeMenu"/>
+								</a>
+							</div>
+							<div style="margin-top: 6px;">
+								<a href="javascript:void(0);" ng-click="openMenu('facebook');">
+									<img ng-src="./appBuilder/assets/{{folderName}}/facebook.png" class="appHomeMenu"/>
+								</a>
+								<a href="javascript:void(0);" ng-click="openMenu('contact');">
+									<img ng-src="./appBuilder/assets/{{folderName}}/contact.png" class="appHomeMenu"/>
+								</a>
+								<a href="javascript:void(0);" ng-click="openMenu('about');" >
+									<img ng-src="./appBuilder/assets/{{folderName}}/about.png" class="appHomeMenu"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-if="viewPage.menuPage && homeMenu.list">
+					<div class="appCss">
+						<div class="row" style="margin-left:0px;">
+							<div class="headerMenuAll">
+								<div class="col-sm-2">
+									<span style="margin-left:0px;">
+										<a href="javascript:void(0);" ng-click="openMenu('backHome')"><img src="./appBuilder/assets/images/back-arrow.jpg" class="backImage" /></a>
+									</span>
+								</div>
+								<div class="col-sm-10 text-center">
+									Home
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-md-6" style="margin-left:0px;" ng-repeat="category in categoryList">
+							  	<a href="javascript:void(0);" ng-click="openItemPage(category.id,category.name);">
+									<div class="thumbnail">
+		  								<img src="./appBuilder/assets/{{folderName}}/category/{{category.image}}" alt="{{category.name}}">
+		  								<div class="caption">
+		  								  <h3>{{category.name}}</h3>
+		  								</div>
+		  							  </div>
+							  	</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-if="viewPage.menuPage && homeMenu.details">
+					<div class="appCss">
+						<div class="row" style="margin-left:0px;">
+							<div class="headerMenuAll">
+								<div class="col-sm-2">
+									<span style="margin-left:0px;">
+										<a href="javascript:void(0);" ng-click="openMenu('menu')"><img src="./appBuilder/assets/images/back-arrow.jpg" class="backImage" /></a>
+									</span>
+								</div>
+								<div class="col-sm-10 text-center">
+									{{categoryName}}
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-md-6" style="margin-left:0px;" ng-repeat="item in itemList">
+								<div class="thumbnail">
+									<img src="./appBuilder/assets/{{folderName}}/category/{{item.image}}" alt="{{item.name}}">
+									<div class="caption">
+									  <h3>{{item.name}}</h3>
+									</div>
+								  </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-if="viewPage.facebook">
+					Facebook
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<footer>
+		<p class="text-center">Angular Js 2 Demo Project &copy; Developed By Randhir Jha.</p>
+	</footer>
+</body>
+</html>
