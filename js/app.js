@@ -64,6 +64,7 @@ app.controller('mainCtrl',function($scope,$rootScope,$timeout) {
 			}
 		];
 	};
+	getCategoryList();
 
 	var getItemList = function(id,categoryName){
 		$scope.categoryName = categoryName;
@@ -91,6 +92,9 @@ app.controller('mainCtrl',function($scope,$rootScope,$timeout) {
 		];
 	};
 
+	$scope.getSubCategoryList = function(id,name){
+		getItemList(id,name);
+	};
 	var addItemList = function(data){
 
 	};

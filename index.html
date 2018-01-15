@@ -63,7 +63,7 @@
 		<div class="row">
 			<div class="col-sm-8">
 				<div class="row">
-					<a href="javascript:void(0);" ng-click="openMenu('home');">
+					<a href="javascript:void(0);" ng-click="openMenu('backHome');">
 						<img src="./appBuilder/assets/images/home.png" />
 					</a>
 					<a href="javascript:void(0);" ng-click="openMenu('facebook');">
@@ -74,8 +74,42 @@
 					<img src="./appBuilder/assets/images/social.png" />
 				</div>
 				<div class="homeWeb" ng-if="viewPage.menuPage">
-					<div class="row">
+					<div class="row text-center">
 						<h4>Home</h4>
+					</div>
+					<div class="row">
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						  <div class="panel panel-default" ng-repeat="categoryWeb in categoryList">
+						    <div class="panel-heading" role="tab" id="heading{{categoryWeb.id}}">
+						      <h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" ng-click="getSubCategoryList(categoryWeb.id,categoryWeb.name);" data-parent="#accordion" href="#collapse{{categoryWeb.id}}" aria-expanded="true" aria-controls="collapse{{categoryWeb.id}}">
+						          <div class="row">
+									  <div class="col-sm-6">
+										{{categoryWeb.name}}
+									  </div>
+									  <div class="col-sm-6 text-right">
+										  <span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="openCategoryEditPage(categoryWeb.id);"></span>
+									  </div>
+								  </div>
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapse{{categoryWeb.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{categoryWeb.id}}">
+						      <div class="panel-body">
+						        <div class="row">
+									<ul class="list-group">
+									  <li class="list-group-item" ng-repeat="itemWeb in itemList">
+									    <span class="badge" ng-click="openSubCategoryEditPage(itemWeb.id);">
+											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+										</span>
+									    {{itemWeb.name}}
+									  </li>
+									</ul>
+								</div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 					</div>
 				</div>
 				<div class="facebookWeb" ng-if="viewPage.facebook">
@@ -172,7 +206,26 @@
 					</div>
 				</div>
 				<div ng-if="viewPage.facebook">
-					Facebook
+					<div class="appCss">
+						<div class="row" style="margin-left:0px;">
+							<div class="headerMenuAll">
+								<div class="col-sm-2">
+									<span style="margin-left:0px;">
+										<a href="javascript:void(0);" ng-click="openMenu('backHome')"><img src="./appBuilder/assets/images/back-arrow.jpg" class="backImage" /></a>
+									</span>
+								</div>
+								<div class="col-sm-10 text-center">
+									Facebook
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-md-6" style="margin-left:0px;">
+							  	Facebook
+
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
